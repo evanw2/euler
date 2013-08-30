@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+#Not a solution to any problem, but might be a starting point towards doing something
+#  on problem 351 -- Hexagonal orchards
+
 def print_hex(n):
    #print ascending
    space = n
