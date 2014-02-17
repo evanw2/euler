@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-print "-" * 20
-print "|"
+print "0" * 20
+print "*"
 
 
 
