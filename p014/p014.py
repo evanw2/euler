@@ -45,6 +45,6 @@ for i in range(2,1000000):
         longest_chain = n
         longest_start = i
 
-print longest_start, longest_chain
+print longest_start
 
 
