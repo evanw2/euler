@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import math
+import operator as op
 
 def is_prime(n):
    if n < 2:
@@ -13,6 +14,36 @@ def is_prime(n):
          return False
       i += 1
    return True
+
+def num_divs(n):
+   facts = prime_factors(n)
+   divs = 1
+   for key in facts:
+      divs *= facts[key]+1
+   return divs
+
+
+def prime_factors(n):
+   factors = {}
+   for i in range(2, n+1)):
+      if i > n:
+         break
+      while n % i == 0:
+         if not i in factors:
+            factors[i] = 0
+         factors[i] += 1
+         n /= i
+   return factors
+
+
+# nCr that avoids some of the factorial calculations
+def nCr(n,r):
+    #swap n-r and r to cancel as much as possible
+    r = min(n-r, r)
+    if r == 0: return 1
+    numer = reduce(op.mul, xrange(n, n-r, -1))
+    denom = reduce(op.mul, xrange(1, r+1))
+    return numer//denom
 
 ##### Permutations methods ########
 
@@ -52,27 +83,5 @@ def next(digits):
    sort_from_i(digits, digit_to_move + 1)
    
 #############
-
-
-def num_divs(n):
-   facts = prime_factors(n)
-   divs = 1
-   for key in facts:
-      divs *= facts[key]+1
-   return divs
-
-
-def prime_factors(n):
-   factors = {}
-   for i in range(2, n+1)):
-      if i > n:
-         break
-      while n % i == 0:
-         if not i in factors:
-            factors[i] = 0
-         factors[i] += 1
-         n /= i
-   return factors
-
 
 
