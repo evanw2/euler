@@ -45,6 +45,18 @@ def nCr(n,r):
     denom = reduce(op.mul, xrange(1, r+1))
     return numer//denom
 
+
+def is_square(k):
+    #check for some bit patterns for faster rejection. (sqrt is a bit slow
+    #  for larger numbers.)
+    last_3_bits = k & 7
+    if not (last_3_bits == 0 or last_3_bits == 1 or last_3_bits == 4):
+        return False
+    d = round(math.sqrt(k))
+    return d*d == k
+
+
+
 ##### Permutations methods ########
 
 def maxed(digits):
