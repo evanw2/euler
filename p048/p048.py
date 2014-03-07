@@ -12,6 +12,7 @@ Find the last ten digits of the series, 1^1 + 2^2 + 3^3 + ... + 1000^1000.
 
 total = 0
 
+# 1000 is intentionally excluded from this range. 
 for i in range(1,1000):
    total += i**i
 
