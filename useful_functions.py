@@ -3,10 +3,10 @@ import math
 import operator as op
 
 def is_prime(n):
-   if n < 2:
-      return False
    if n == 2:
       return True
+   if n % 2 == 0:
+      return False
    i = 2
    sq = math.sqrt(n)
    while i <= sq:
@@ -15,7 +15,38 @@ def is_prime(n):
       i += 1
    return True
 
+   
+def prime_sieve_dict(upper):
+   import pdb; pdb.set_trace()
+   """ Returns an 'is_prime' dictionary for numbers less than upper """
+   is_prime = {}
+
+   for i in range(2, upper):
+      is_prime[i] = True
+
+   current_prime = 2
+   while True:
+      # Set all multiples of the current prime to be False.
+      val = 2 * current_prime
+      while val < upper:
+         is_prime[val] = False 
+         val += current_prime
+
+      # get next prime, or break if it is outside the range
+      val = current_prime + 1
+      while val < upper and not is_prime[val]:
+          val += 1
+      if val == upper:
+          break
+      else:
+          current_prime = val
+
+   return is_prime    
+
+
+
 def num_divs(n):
+   print "hi"
    facts = prime_factors(n)
    divs = 1
    for key in facts:
@@ -25,7 +56,7 @@ def num_divs(n):
 
 def prime_factors(n):
    factors = {}
-   for i in range(2, n+1)):
+   for i in range(2, n+1):
       if i > n:
          break
       while n % i == 0:
