@@ -16,7 +16,7 @@ d1 x d10 x d100 x d1000 x d10000 x d100000 x d1000000
 
 #'state' variables
 next_num = 1
-# 1 - ones place, 2 - tens
+# 1 - ones place, 2 - tens, 3 - hundreds, ...
 current_digit = 1
 
 def digits(n):
