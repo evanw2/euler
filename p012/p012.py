@@ -32,7 +32,9 @@ def tri(n):
    return n*(n+1)/2
 
 
-
+# returns a dictionary of prime factors of n, where the keys
+#   are the prime factors, and the values are the number
+#   of times that factor goes in to n
 def prime_factors(n):
    factors = {}
    for i in (primes + range(29, n+1)):
@@ -45,6 +47,7 @@ def prime_factors(n):
          n /= i
    return factors
 
+# returns the number of divisors of n
 def num_divs(n):
    facts = prime_factors(n)
    divs = 1
