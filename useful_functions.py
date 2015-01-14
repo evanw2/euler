@@ -17,7 +17,6 @@ def is_prime(n):
 
    
 def prime_sieve_dict(upper):
-   import pdb; pdb.set_trace()
    """ Returns an 'is_prime' dictionary for numbers less than upper """
    is_prime = {}
 
@@ -46,7 +45,6 @@ def prime_sieve_dict(upper):
 
 
 def num_divs(n):
-   print "hi"
    facts = prime_factors(n)
    divs = 1
    for key in facts:
@@ -124,6 +122,20 @@ def next(digits):
    next_biggest = larger_than(digits, digits[digit_to_move])
    swap(digits, digit_to_move, next_biggest)
    sort_from_i(digits, digit_to_move + 1)
+
+def same_digits(m, n):
+   """Returns True if m and n have the same digits in a different order."""
+   d1 = {0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0}
+   d2 = dict(d1)
+   while m > 0 and n > 0:
+      d1[m%10] += 1
+      m /= 10
+      d1[n%10] += 1
+      n /= 10
+   if m != n # both should be zero if same length
+      return False
+   return d1 == d2
+   
    
 #############
 
