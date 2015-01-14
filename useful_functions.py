@@ -84,9 +84,24 @@ def is_square(k):
     d = round(math.sqrt(k))
     return d*d == k
 
+def same_digits(m, n):
+   """Returns True if m and n have the same digits in a different order."""
+   d1 = {0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0}
+   d2 = dict(d1)
+   while m > 0 and n > 0:
+      d1[m%10] += 1
+      m /= 10
+      d1[n%10] += 1
+      n /= 10
+   if m != n # both should be zero if same length
+      return False
+   return d1 == d2
 
 
 ##### Permutations methods ########
+#   These functions are mostly from problem 24, having to do with 
+#   digit permutations, where I was permuting digits. Maybe not
+#   generally useful.
 
 def maxed(digits):
    return sorted(digits, reverse = True) == digits
@@ -123,20 +138,9 @@ def next(digits):
    swap(digits, digit_to_move, next_biggest)
    sort_from_i(digits, digit_to_move + 1)
 
-def same_digits(m, n):
-   """Returns True if m and n have the same digits in a different order."""
-   d1 = {0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0}
-   d2 = dict(d1)
-   while m > 0 and n > 0:
-      d1[m%10] += 1
-      m /= 10
-      d1[n%10] += 1
-      n /= 10
-   if m != n # both should be zero if same length
-      return False
-   return d1 == d2
-   
-   
 #############
+
+
+   
 
 
